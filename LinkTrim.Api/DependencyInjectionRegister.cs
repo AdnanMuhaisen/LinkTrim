@@ -1,4 +1,5 @@
-﻿using LinkTrim.Api.Core.Interfaces;
+﻿using Asp.Versioning;
+using LinkTrim.Api.Core.Interfaces;
 using LinkTrim.Api.Infrastructure.Data.Contexts;
 using LinkTrim.Api.Infrastructure.Services;
 using LinkTrim.Api.Mappers;
@@ -8,7 +9,7 @@ namespace LinkTrim.Api;
 
 public static class DependencyInjectionRegister
 {
-    public static IServiceCollection AddInfrastructure(this IServiceCollection services,IConfiguration configuration)
+    public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddDbContext<AppDbContext>(options =>
         {
@@ -31,6 +32,19 @@ public static class DependencyInjectionRegister
         services.AddControllers();
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
+
+        services.AddApiVersioning(options =>
+        {
+            options.ReportApiVersions = true;
+            options.AssumeDefaultVersionWhenUnspecified = true;
+            options.DefaultApiVersion = new(1, 0);
+            options.ApiVersionReader = new UrlSegmentApiVersionReader();
+        })
+        .AddApiExplorer(options =>
+        {
+            options.GroupNameFormat = "'v'VVV";
+            options.SubstituteApiVersionInUrl = true;
+        });
 
         services.AddScoped<IUrlMappingMapper, UrlMappingMapper>();
         services.AddScoped<IUrlHashingService, UrlHashingService>();
