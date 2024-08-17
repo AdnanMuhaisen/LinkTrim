@@ -38,7 +38,6 @@ public static class ShortenUrl
             // Generate a url mapping for the url
             var shortCode = Guid.NewGuid().ToString()[..4];
             var shortenedUrl = $"{request.Scheme}://{request.HostName}/url/{shortCode}";
-            var originalUrlHash = urlHashingService.GetHash(request.OriginalUrl);
 
             UrlMapping addedUrlMapping = new()
             {
