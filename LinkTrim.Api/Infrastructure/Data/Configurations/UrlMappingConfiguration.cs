@@ -1,4 +1,4 @@
-﻿using LinkTrim.Api.Core.Entities;
+﻿using LinkTrim.Api.Core.Entities.UrlMappingAggregates;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -14,8 +14,8 @@ public class UrlMappingConfiguration : IEntityTypeConfiguration<UrlMapping>
         builder.Property(p => p.Id)
             .ValueGeneratedOnAdd();
 
-        builder.Property(x => x.OriginalUrl)
-            .HasMaxLength(100);
+        builder.Property(p => p.OriginalUrl)
+            .HasMaxLength(4_000);
 
         builder.Property(x => x.ShortenedUrl)
             .HasMaxLength(50);     

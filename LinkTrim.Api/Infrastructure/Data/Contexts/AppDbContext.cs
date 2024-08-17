@@ -1,4 +1,4 @@
-﻿using LinkTrim.Api.Core.Entities;
+﻿using LinkTrim.Api.Core.Entities.UrlMappingAggregates;
 using Microsoft.EntityFrameworkCore;
 
 namespace LinkTrim.Api.Infrastructure.Data.Contexts;
@@ -14,7 +14,7 @@ public class AppDbContext(DbContextOptions dbContextOptions) : DbContext(dbConte
 
         #region FluentApiConfigurations
         modelBuilder.Entity<UrlMapping>()
-            .HasIndex(c => c.OriginalUrl);
+            .HasIndex(c => c.OriginalUrlHash);
 
         modelBuilder.Entity<UrlMapping>()
             .HasQueryFilter(c => !c.IsDeleted);

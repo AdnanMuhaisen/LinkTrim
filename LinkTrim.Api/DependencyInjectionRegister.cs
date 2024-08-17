@@ -1,4 +1,7 @@
-﻿using LinkTrim.Api.Infrastructure.Data.Contexts;
+﻿using LinkTrim.Api.Core.Interfaces;
+using LinkTrim.Api.Infrastructure.Data.Contexts;
+using LinkTrim.Api.Infrastructure.Services;
+using LinkTrim.Api.Mappers;
 using Microsoft.EntityFrameworkCore;
 
 namespace LinkTrim.Api;
@@ -15,6 +18,11 @@ public static class DependencyInjectionRegister
                 .EnableSensitiveDataLogging();
         });
 
+        services.AddMediatR(config =>
+        {
+            config.RegisterServicesFromAssembly(typeof(DependencyInjectionRegister).Assembly);
+        });
+
         return services;
     }
 
@@ -23,6 +31,9 @@ public static class DependencyInjectionRegister
         services.AddControllers();
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
+
+        services.AddScoped<IUrlMappingMapper, UrlMappingMapper>();
+        services.AddScoped<IUrlHashingService, UrlHashingService>();
 
         return services;
     }

@@ -1,12 +1,14 @@
 ﻿using LinkTrim.Api.Core.Entities.Abstraction;
 
-namespace LinkTrim.Api.Core.Entities;
+namespace LinkTrim.Api.Core.Entities.UrlMappingAggregates;
 
 public class UrlMapping : IEntity, ISoftDeleteableEntity
 {
     public int Id { get; set; }
 
     public string OriginalUrl { get; set; } = default!;
+
+    public string OriginalUrlHash { get; set; } = default!;
 
     public string ShortenedUrl { get; set; } = default!;
 
