@@ -31,7 +31,8 @@ public static class GetUrlMappingByOriginalUrl
                     CreatedAt = urlMapping.CreatedAt,
                     ShortCode = urlMapping.ShortCode,
                     OriginalUrl = urlMapping.OriginalUrl,
-                    ShortenedUrl = urlMapping.ShortenedUrl
+                    ShortenedUrl = urlMapping.ShortenedUrl,
+                    OriginalUrlHash = urlMapping.OriginalUrlHash
                 };
 
                 return urlMappingDto;

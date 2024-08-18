@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4E0660EF-608
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{E3D8E4EE-EBAE-40CD-AE6E-C5250B0B292B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkTrim.Features.UnitTests", "LinkTrim.Features.UnitTests\LinkTrim.Features.UnitTests.csproj", "{92873798-701F-4EB5-9046-1B65154B5241}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinkTrim.Features.UnitTests", "LinkTrim.Features.UnitTests\LinkTrim.Features.UnitTests.csproj", "{92873798-701F-4EB5-9046-1B65154B5241}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,4 +1,6 @@
 ﻿using Asp.Versioning;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using LinkTrim.Api.Core.Interfaces;
 using LinkTrim.Api.Infrastructure.Data.Contexts;
 using LinkTrim.Api.Infrastructure.Services;
@@ -45,6 +47,10 @@ public static class DependencyInjectionRegister
             options.GroupNameFormat = "'v'VVV";
             options.SubstituteApiVersionInUrl = true;
         });
+
+        services
+            .AddFluentValidationAutoValidation()
+            .AddValidatorsFromAssembly(typeof(DependencyInjectionRegister).Assembly);
 
         services.AddScoped<IUrlMappingMapper, UrlMappingMapper>();
         services.AddScoped<IUrlHashingService, UrlHashingService>();

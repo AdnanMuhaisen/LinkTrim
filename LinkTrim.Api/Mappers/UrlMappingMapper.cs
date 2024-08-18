@@ -20,7 +20,8 @@ public class UrlMappingMapper : IUrlMappingMapper
             CreatedAt = urlMappingDto.CreatedAt,
             ShortCode = urlMappingDto.ShortCode,
             OriginalUrl = urlMappingDto.OriginalUrl,
-            ShortenedUrl = urlMappingDto.ShortenedUrl
+            ShortenedUrl = urlMappingDto.ShortenedUrl,
+            OriginalUrlHash = urlMappingDto.OriginalUrlHash
         };
     }
 
@@ -32,7 +33,8 @@ public class UrlMappingMapper : IUrlMappingMapper
             CreatedAt = urlMapping.CreatedAt,
             ShortCode = urlMapping.ShortCode,
             OriginalUrl = urlMapping.OriginalUrl,
-            ShortenedUrl = urlMapping.ShortenedUrl
+            ShortenedUrl = urlMapping.ShortenedUrl,
+            OriginalUrlHash = urlMapping.OriginalUrlHash
         };
     }
 }

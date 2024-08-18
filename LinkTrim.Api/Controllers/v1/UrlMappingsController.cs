@@ -1,4 +1,5 @@
 ﻿using Asp.Versioning;
+using LinkTrim.Api.Commands;
 using LinkTrim.Api.Dtos;
 using LinkTrim.Api.Features.UrlMappings;
 using MediatR;
@@ -14,15 +15,15 @@ public class UrlMappingsController(ISender sender) : ControllerBase
     [HttpPost("shorten")]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType<UrlMappingDto>(StatusCodes.Status200OK)]
-    public async Task<IActionResult> ShortenUrl([FromQuery] string url)
+    public async Task<IActionResult> ShortenUrl(ShortenUrlCommand shortenUrlCommand)
     {
-        if (string.IsNullOrEmpty(url) || !Uri.TryCreate(url, UriKind.RelativeOrAbsolute, out _))
+        if (!ModelState.IsValid)
         {
             return BadRequest("Invalid url to shorten!");
         }
 
         var result = await sender.Send(new ShortenUrl.Command(
-                Uri.UnescapeDataString(url),
+                shortenUrlCommand.OriginalUrl!,
                 HttpContext.Request.Scheme,
                 HttpContext.Request.Host.Value));
 
