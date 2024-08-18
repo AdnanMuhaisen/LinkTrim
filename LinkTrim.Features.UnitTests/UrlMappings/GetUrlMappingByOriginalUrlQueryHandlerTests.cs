@@ -14,7 +14,7 @@ public class GetUrlMappingByOriginalUrlQueryHandlerTests
         => (LinkTrimTestDbFixture) = (linkTrimTestDbFixture);
 
     [Fact]
-    public async Task QueryHandler_GetAvailableUrlMapping_ReturnsTargetUrlMapping()
+    public async Task QueryHandler_GetAvailableUrlMapping_ReturnsExpectedUrlMapping()
     {
         // Arrange
         using var appDbContext = LinkTrimTestDbFixture.CreateContext();
@@ -30,7 +30,7 @@ public class GetUrlMappingByOriginalUrlQueryHandlerTests
     }
 
     [Fact]
-    public async Task QueryHandler_GetUnavailableUrlMapping_NotFoundError()
+    public async Task QueryHandler_GetUnavailableUrlMapping_ReturnsNotFoundError()
     {
         // Arrange
         using var appDbContext = LinkTrimTestDbFixture.CreateContext();
