@@ -31,8 +31,6 @@ public class LinkTrimTestDbFixture
     public AppDbContext CreateContext()
     {
         var dbContextOption = new DbContextOptionsBuilder<AppDbContext>()
-            .EnableDetailedErrors()
-            .EnableSensitiveDataLogging()
             .UseSqlServer(ConnectionString)
             .Options;
 

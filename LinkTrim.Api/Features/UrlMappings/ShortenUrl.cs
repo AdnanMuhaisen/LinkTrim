@@ -42,8 +42,8 @@ public static class ShortenUrl
             UrlMapping addedUrlMapping = new()
             {
                 ShortCode = shortCode,
+                CreatedAt = DateTime.Now,
                 ShortenedUrl = shortenedUrl,
-                CreatedAt = DateTime.UtcNow,
                 OriginalUrlHash = targetUrlHash,
                 OriginalUrl = request.OriginalUrl
             };
